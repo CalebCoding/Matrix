@@ -13,6 +13,4 @@ const mat = NumberMatrix.Create([5, 4],
 
 mat.Display()
 dashline()
-NumberMatrix.Identity(3).Display()
-dashline()
-NumberMatrix.Identity(5).Display()
+console.log(mat.GetCol(2))

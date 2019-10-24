@@ -11,7 +11,5 @@ const mat = matrix_1.default.Create([5, 4], [
 ]);
 mat.Display();
 dashline();
-matrix_1.default.Identity(3).Display();
-dashline();
-matrix_1.default.Identity(5).Display();
+console.log(mat.GetCol(2));
 //# sourceMappingURL=index.js.map

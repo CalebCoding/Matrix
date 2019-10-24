@@ -57,6 +57,26 @@ abstract class MatrixClass<Type> {
         return this.Data
     }
 
+    public GetRow(m: number){
+        if(m<= this.m && m > 0){
+            return this.Data.slice((m-1) * this.n, m * this.n)
+        } else {
+            throw new Error('Get Matrix Row: Incorrect row number.')
+        }
+    }
+
+    public GetCol(n: number){
+        if(n<= this.n && n > 0){
+            const Col = Array(this.m)
+            for (let M = 0; M < this.m; M++) {
+                Col[M] = this.Data[M * this.n + n - 1]
+            }
+            return Col
+        } else {
+            throw new Error('Get Matrix Col: Incorrect col number.')
+        }
+    }
+
     public T: () => MatrixClass<Type>
     public Transpose(): MatrixClass<Type>{
         let data: Type[] = Array(this.m * this.n);

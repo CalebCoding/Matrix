@@ -34,6 +34,26 @@ class MatrixClass {
     GetRawData() {
         return this.Data;
     }
+    GetRow(m) {
+        if (m <= this.m && m > 0) {
+            return this.Data.slice((m - 1) * this.n, m * this.n);
+        }
+        else {
+            throw new Error('Get Matrix Row: Incorrect row number.');
+        }
+    }
+    GetCol(n) {
+        if (n <= this.n && n > 0) {
+            const Col = Array(this.m);
+            for (let M = 0; M < this.m; M++) {
+                Col[M] = this.Data[M * this.n + n - 1];
+            }
+            return Col;
+        }
+        else {
+            throw new Error('Get Matrix Col: Incorrect col number.');
+        }
+    }
     Transpose() {
         let data = Array(this.m * this.n);
         const [M, N] = [this.m, this.n];
@@ -92,6 +112,17 @@ class NumberMatrixClass extends MatrixClass {
             newMat[i] = thisValue[i] - matValue[i];
         }
         return new NumberMatrixClass(mat.GetDimension(), newMat);
+    }
+    multiply(scalar) {
+        if (typeof scalar === 'number') {
+            this.Data.every((val, pos, data) => {
+                data[pos] = scalar * val;
+            });
+        }
+        else {
+            const mat = scalar;
+        }
+        return this;
     }
 }
 const NumberMatrix = {
